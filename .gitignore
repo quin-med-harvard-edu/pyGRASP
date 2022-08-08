@@ -1,0 +1,12 @@
+*.m~
+*.txt
+*.log
+.ipynb_checkpoints/
+*notebooks/*
+*dummy*
+*.jpg
+.idea/
+dev_diary.txt
+stuff.py
+*.pyc
+*.mat
