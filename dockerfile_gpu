@@ -1,0 +1,38 @@
+FROM nvidia/cuda:11.7.0-devel-ubuntu20.04
+ENV DEBIAN_FRONTEND=noninteractive
+# FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
+
+
+MAINTAINER Can Taylan Sari <can.sari@childrens.harvard.edu>
+
+WORKDIR /home/docker_conda_gpu_dce_mri
+
+#COPY environment.yml ./
+#COPY dce_mri-main ./
+#COPY run_grasp.sh ./
+COPY . ./
+
+RUN apt-get update --fix-missing && \
+    apt-get install -y wget bzip2 ca-certificates libglib2.0-0 libxext6 libsm6 libxrender1 git mercurial subversion && \
+    apt-get cleanex
+
+RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -O ~/anaconda.sh && \
+        /bin/bash ~/anaconda.sh -b -p /opt/conda && \
+        rm ~/anaconda.sh && \
+        ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
+        echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+        find /opt/conda/ -follow -type f -name '*.a' -delete && \
+        find /opt/conda/ -follow -type f -name '*.js.map' -delete && \
+        /opt/conda/bin/conda clean -afy
+
+ENV PATH /opt/conda/bin:$PATH
+
+RUN conda update conda \
+    && conda env create --name dce_env -f environment.yml
+
+RUN echo "conda activate dce_env" >> ~/.bashrc
+ENV PATH /opt/conda/envs/dce_env/bin:$PATH
+ENV CONDA_DEFAULT_ENV $dce_env
+
+CMD [ "./run_grasp.sh" ]
+

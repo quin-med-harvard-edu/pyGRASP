@@ -1,0 +1,26 @@
+FROM continuumio/miniconda3:latest
+
+MAINTAINER Can Taylan Sari <can.sari@childrens.harvard.edu>
+
+WORKDIR /home/docker_conda_cpu_dce_mri
+
+#COPY environment.yml ./
+#COPY dce_mri-main ./
+#COPY run_grasp.sh ./
+COPY . ./
+
+RUN ls
+
+RUN python --version
+
+RUN conda env create -f environment.yml
+
+RUN echo "source activate dce_env" ~/.bashrc
+
+ENV PATH /opt/conda/envs/dce_env/bin:$PATH
+
+ENV LD_LIBRARY_PATH /opt/conda/envs/dce_env/lib:$LD_LIBRARY_PATH
+
+RUN conda list
+
+CMD [ "./run_grasp.sh" ]
