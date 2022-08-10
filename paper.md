@@ -1,7 +1,7 @@
 # PyGRASP: A library to reconstruct Dynamic Contrast enhanced MR Images acquired with radial sampling
 
 ---
-title: 'PyGRASP: A library to reconstruct Dynamic Contrast enhanced MR Images acquired with radial sampling'
+title: 'PyGRASP: A library to reconstruct dynamic contrast enhanced MR images acquired with radial sampling'
 
 tags:
   - Python
