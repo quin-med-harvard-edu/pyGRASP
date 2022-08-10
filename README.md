@@ -86,7 +86,7 @@ In order to start running dce_mri on a docker container, your current directory 
 
 ## DEMO
 
-To run demo use pyGRASP_demo.sh.
+An example script "pyGRASP_demo.sh" has been provided to run a demo case along with the raw data. Environment, code and input-output paths have to be edited in pyGRASP_demo.sh. Also, raw data address has to be updated in MRU.csv. Then, one can run the demo via "bash pyGRASP_demo.sh" command on terminal.  
 
 ## CPU 
 
