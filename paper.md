@@ -2,11 +2,13 @@
 
 ---
 title: 'PyGRASP: A library to reconstruct Dynamic Contrast enhanced MR Images acquired with radial sampling'
+
 tags:
   - Python
   - dynamic contrast enhanced MRI
   - radial sampling
   - GRASP
+
 authors:
 - name: Cemre Ariyurek
     orcid: 0000-0002-1691-7097
