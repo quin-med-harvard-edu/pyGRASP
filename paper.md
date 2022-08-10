@@ -7,24 +7,40 @@ tags:
   - dynamic contrast enhanced MRI
   - radial sampling
   - GRASP
-authors:- name: Aziz Ko\c{c}anao\u{g}ullar\i
-    orcid: 0000-0000-0000-0000
+authors:
+- name: Cemre Ariyurek
+    orcid: 0000-0002-1691-7097
     equal-contrib: true
-    affiliation: "1, 2" # (Multiple affiliations must be quoted)
-  - name: Author Without ORCID
-    equal-contrib: true # (This is how you can denote equal contributions between multiple authors)
-    affiliation: 2
-  - name: Author with no affiliation
-    corresponding: true # (This is how to denote the corresponding author)
-    affiliation: 3
-affiliations:
- - name: Boston Children's Hospital and Harvard Medical School
+    corresponding: true 
+    affiliation: 1
+    
+- name: Aziz Ko\c{c}anao\u{g}ullar\i
+    orcid: 0000-0002-4776-4206
+    equal-contrib: true
+    affiliation: 1
+    
+- name: Can Taylan Sari
+  orcid: 0000-0001-6140-3717
+  affiliation: 1
+  
+- name:  Serge Vasylechko
+  orcid: 0000-0002-5691-0607
+  affiliation: 1
+  
+- name:  Onur Afacan 
+  orcid: 0000-0003-2112-3205
+  affiliation: 1
+  
+- name:  Sila Kurugol 
+  orcid: 0000-0002-5081-4569
+  affiliation: 1
+  
+ affiliations:
+ - name: Quantitative Intelligent Imaging (QUIN) Lab, Boston Children's Hospital and Harvard Medical School
    index: 1
- - name: Institution Name, Country
-   index: 2
- - name: Independent Researcher, Country
-   index: 3
-date: 27 July 2022
+   
+date: 10 August 2022
+
 bibliography: references.bib
 ---
 
