@@ -11,7 +11,7 @@ authors:
     equal-contrib: true
     corresponding: true 
     affiliation: 1
-  - name: Aziz Kocanaogullari
+  - name: Aziz Ko\c{c}anao\u{g}ullar{\i}
     orcid: 0000-0002-4776-4206
     equal-contrib: true
     affiliation: 1
