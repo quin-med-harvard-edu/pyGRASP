@@ -11,20 +11,20 @@ authors:
     equal-contrib: true
     corresponding: true 
     affiliation: 1
-  - name: Aziz #Ko\c{c}anao\u{g}ullar\i
+  - name: Aziz Ko\c{c}anao\u{g}ullar\i
     orcid: 0000-0002-4776-4206
     equal-contrib: true
     affiliation: 1
   - name: Can Taylan Sari
     orcid: 0000-0001-6140-3717
-    affiliation: 1      
-    - name:  Serge Vasylechko
+    affiliation: 1
+  - name:  Serge Vasylechko
     orcid: 0000-0002-5691-0607
     affiliation: 1
-    - name:  Onur Afacan 
+  - name:  Onur Afacan 
     orcid: 0000-0003-2112-3205
     affiliation: 1
-    - name:  Sila Kurugol 
+  - name:  Sila Kurugol 
     orcid: 0000-0002-5081-4569
     affiliation: 1
 affiliations:
