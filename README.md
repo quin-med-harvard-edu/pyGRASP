@@ -1,17 +1,17 @@
 # PyGRASP: A library to reconstruct Dynamic Contrast enhanced MR Images acquired with radial sampling
 
-PyGRASP is a python library for temporally regularized iterative compressed sensing reconstruction (GRASP) for dynamic contrast enhanced MRI (DCE-MRI), developed by the team at Quantitative Intelligent Imaging Lab ([QUIN](https://projects.iq.harvard.edu/quin/home)) at the radiology department of Boston Children's Hospital and Harvard Medical School. It assumes the k-space data is acquired by a Non-Cartesian, radial k-space sampling using the golden angle stack of stars trajectory.  The output is a dynamic set of volumes reconstructed at the desired temporal resolution. PyGRASP uses torchkbnufft library for a fast implementation of non-uniform Fast Fourier Transform (NUFFT) with Kaiser-Bessel gridding in PyTorch. PyGRASP uses GPU or CPU for parallelization of the NUFFT computations over the large number of dynamic volumes to be reconstructed over time.
+PyGRASP is a Python library for temporally regularized iterative compressed sensing reconstruction (GRASP) for dynamic contrast enhanced MRI (DCE-MRI), developed by the team at Quantitative Intelligent Imaging Lab ([QUIN](https://projects.iq.harvard.edu/quin/home)) at the radiology department of Boston Children's Hospital and Harvard Medical School. It assumes the k-space data is acquired by a Non-Cartesian, radial k-space sampling using the golden angle stack of stars trajectory.  The output is a dynamic set of volumes reconstructed at the desired temporal resolution. PyGRASP uses torchkbnufft library for a fast implementation of non-uniform Fast Fourier Transform (NUFFT) with Kaiser-Bessel gridding in PyTorch. PyGRASP uses GPU or CPU for parallelization of the NUFFT computations over the large number of dynamic volumes to be reconstructed over time.
 
 There are several parameters that can be modified as needed including the number of radial lines (spokes) per volume, which determines the temporal resolution and also the number of volumes generated and the regularization parameter lambda of the GRASP reconstruction that determines the amount of temporal regularization. 
 
 This library also provides the options to perform coil compression and/or coil removal before performing the reconstruction in order to speed up the reconstruction and also to improve image quality by removing coils that include severe artifacts.
 
-PyGRASP is implemented completely in Python, facilitating flexible deployment with readable code and no complation. We also provide containerized version of the library in dockers for GPU and CPU options for quick deployment.
+PyGRASP is implemented completely in Python, facilitating flexible deployment with readable code and no complation. We also provide containerized version of the library in Dockers for GPU and CPU options for quick deployment.
 
-If you use this library or its containerized docker versions please cite our [JOSS](https://joss.theoj.org/) paper.
+If you use this library or its containerized Docker versions please cite our [JOSS](https://joss.theoj.org/) paper.
 
 ## Instructions to run dce_mri
-There are three main parts - and python scripts - of the reconstruction pipeline:
+There are three main parts - and Python scripts - of the reconstruction pipeline:
 <ol>
   <li>convert_raw_to_dataset.py</li>
   Reads raw data file (currently only reads Siemens raw data), calculates coil sensitivity maps, writes k-space information and reconstruction parameters to the configuration files.
@@ -80,9 +80,9 @@ Note that spv and lam values should be entered to grasp_params.json file by the 
 ## Options for parallel processing
 For each slice, the GRASP algorithm performs multiple iterations of iterative optimization for minimizing the loss function which includes a data consistency term and a regularization term for temporal regularization using the conjugate gradient descent algorithm to reduce the effect of undersamplign artifacts in the form of streaking. At each iteration a nonuniform Fourtier transform (NUFFT) is computed. To speed up the compuations, it is posisble to parallelize this step either using the GPU or the CPU. If the algorithms cannot locate available GPU resources, it will automatically run the processing using the available CPU resources.
 
-## Configuration to run dce_mri on CPU and GPU on a docker container (on centos7)
+## Configuration to run dce_mri on CPU and GPU on a Docker container (on centos7)
 
-In order to start running dce_mri on a docker container, your current directory should be the root directory of the repository in your machine.
+In order to start running dce_mri on a Docker container, your current directory should be the root directory of the repository in your machine.
 
 ## DEMO
 
@@ -99,25 +99,25 @@ Json file containing grasp parameters
 Json file containing postprocessing parameters
 
 #### subject.csv
-Csv file including the path of the raw data and patient info. The folder of the path for the raw data should be 'datafolder' since the absolute path of the raw data will be mapped as 'datafolder' in the docker container (e.g., /datafolder/subject1.dat).
+Csv file including the path of the raw data and patient info. The folder of the path for the raw data should be 'datafolder' since the absolute path of the raw data will be mapped as 'datafolder' in the Docker container (e.g., /datafolder/subject1.dat).
 ```
 input_path=/path/to/folder/containing/grasp_params.json/subject.csv/pproc.csv/
 ```
 
 ###  Step 2: Map folder containing raw data
-This path should be the folder containing the raw data given in subject.csv in the host machine. This path will be mapped as 'datafolder' in the docker container and this path will be reachable in the docker container as 'datafolder'. 
+This path should be the folder containing the raw data given in subject.csv in the host machine. This path will be mapped as 'datafolder' in the Docker container and this path will be reachable in the Docker container as 'datafolder'. 
 ```
 data_path=/path/to/folder/containing/raw/data/
 ```
 
-###  Step 3: Build docker image
-'dockerfile_cpu' contains instructions to build the docker image.
-Build process copies the following files into the docker container: 1) environment.yml (file containing required library signatures to run dce_mri), 2) dce_mri python scripts, 3) run_grasp.sh (bash script containing python calls to run dce_mri) .
+###  Step 3: Build Docker image
+'dockerfile_cpu' contains instructions to build the Docker image.
+Build process copies the following files into the Docker container: 1) environment.yml (file containing required library signatures to run dce_mri), 2) dce_mri Python scripts, 3) run_grasp.sh (bash script containing Python calls to run dce_mri) .
 ```
 docker build --no-cache -t dce_mri_cpu:latest -f dockerfile_cpu .
 ```
-###  Step 4: Run docker image
-There are three parameters to run dce_mri using the docker image: 1) #fr#: [flag_reject_coil] if true rejects outlier coils (default: False). 2) #fc#: [flag_compress_coil] if true compresses coils with PCA (default: False), 3) [num_spoke_coil] number of spokes to estimate coil profiles (default: 1300).
+###  Step 4: Run Docker image
+There are three parameters to run dce_mri using the Docker image: 1) #fr#: [flag_reject_coil] if true rejects outlier coils (default: False). 2) #fc#: [flag_compress_coil] if true compresses coils with PCA (default: False), 3) [num_spoke_coil] number of spokes to estimate coil profiles (default: 1300).
 ```
 docker run -it --rm -v $input_path:/inputfolder -v $data_path:/datafolder dce_mri_cpu:latest bash run_grasp.sh #fr# #fc# #nspkc# #is_gpu#
 ```
@@ -150,7 +150,7 @@ sudo yum-config-manager --disable nvidia-container-runtime-experimental
 #### install nvidia container toolkit 
 `yum install -y nvidia-docker2`
 
-#### restart docker
+#### restart Docker
 `sudo systemctl restart docker `
 
 ###  Step 2: Map folder containing configuration files
@@ -162,24 +162,24 @@ Json file containing grasp parameters
 Json file containing postprocessing parameters
 
 #### subject.csv
-Csv file including the path of the raw data and patient info. The folder of the path for the raw data should be 'datafolder' since the absolute path of the raw data will be mapped as 'datafolder' in the docker container (e.g., /datafolder/subject1.dat).
+Csv file including the path of the raw data and patient info. The folder of the path for the raw data should be 'datafolder' since the absolute path of the raw data will be mapped as 'datafolder' in the Docker container (e.g., /datafolder/subject1.dat).
 ```
 input_path=/path/to/folder/containing/grasp_params.json/subject.csv/pproc.csv/
 ```
 
 ###  Step 3: Map folder containing raw data
-This path should be the folder containing the raw data given in subject.csv in the host machine. This path will be mapped as 'datafolder' in the docker container and this path will be reachable in the docker container as 'datafolder'. 
+This path should be the folder containing the raw data given in subject.csv in the host machine. This path will be mapped as 'datafolder' in the Docker container and this path will be reachable in the Docker container as 'datafolder'. 
 ```
 data_path=/path/to/folder/containing/raw/data/
 ```
-###  Step 4: Build docker image
-'dockerfile_gpu' contains instructions to build the docker image.
-Build process copies the following files into the docker container: 1) environment.yml (file containing required library signatures to run dce_mri), 2) dce_mri python scripts, 3) run_grasp.sh (bash script containing python calls to run dce_mri) .
+###  Step 4: Build Docker image
+'dockerfile_gpu' contains instructions to build the Docker image.
+Build process copies the following files into the Docker container: 1) environment.yml (file containing required library signatures to run dce_mri), 2) dce_mri Python scripts, 3) run_grasp.sh (bash script containing Python calls to run dce_mri) .
 ```
 docker build --no-cache -t dce_mri_gpu:latest -f dockerfile_gpu .
 ```
-###  Step 5: Run docker image
-There are three parameters to run dce_mri using the docker image: 1) #fr#: [flag_reject_coil] if true rejects outlier coils (default: False). 2) #fc#: [flag_compress_coil] if true compresses coils with PCA (default: False), 3) [num_spoke_coil] number of spokes to estimate coil profiles (default: 1300).
+###  Step 5: Run Docker image
+There are three parameters to run dce_mri using the Docker image: 1) #fr#: [flag_reject_coil] if true rejects outlier coils (default: False). 2) #fc#: [flag_compress_coil] if true compresses coils with PCA (default: False), 3) [num_spoke_coil] number of spokes to estimate coil profiles (default: 1300).
 ```
 docker run -it --gpus all --rm -v $input_path:/inputfolder -v $data_path:/datafolder dce_mri_gpu:latest bash run_grasp.sh #fr# #fc# #nspkc# #is_gpu#
 ```
