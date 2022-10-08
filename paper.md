@@ -54,7 +54,7 @@ pyGRASP consists of three modules. The first one reads the raw data acquired in 
 ![Flowchart of pyGRASP algorithm. $numSlice$, $N_{iter}$, $N_{vol}$, are the number of reconstructed slices, NUFFT iterations and reconstructed dynamic volumes, respectively. F$ is the nonuniform Fourier transform (NUFT), $C$ is the coil profile transform, $ci$ is the channel index, $TV(.)$ is the total variation, $k_t$ and $x_t$ are the k-space data and image for a time frame t, respectively. pyGRASP enables parallelization over dynamic volumes, hence reducing computation time.\label{fig:fig1}](pyGRASPAlgo.png)
 
 
-![Reconstructed dynamic volumes demonstrating aorta and kidneys for three different regularization parameters ($\lambda$), and corresponding concentration curves. When low regularization is employed, images are more noisy compared to high regularization. On the other hand, high regularization causes the second peak of arterial input function to diminish but images are less noisy with less undersampling artifacts.\label{fig:fig2}](GRASPRegularization.png)
+![Reconstructed dynamic volumes demonstrating aorta and kidneys for three different regularization parameters ($\lambda$), and corresponding concentration curves. When low regularization is employed, images are more noisy compared to high regularization. On the other hand, high regularization causes the second peak of arterial input function to diminish but images are less noisy with less undersampling artifacts.\label{fig:fig2}](GRASPRegularization-2.png)
 
 # Acknowledgements
 
