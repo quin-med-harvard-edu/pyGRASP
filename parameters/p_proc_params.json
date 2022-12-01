@@ -16,5 +16,21 @@
 	"helpTip": "if true applies fft-shift along slice axis",
 	"val": true,
 	"type": "bool"
-}
+},
+"dx": {
+	"section": "slice_resampling_params",
+	"helpTip": "dx",
+	"val": 1.25,
+	"type": "float"
+},
+"dy": {
+	"section": "slice_resampling_params",
+	"helpTip": "dy",
+	"val": 1.25,
+	"type": "float"},
+"dz": {
+	"section": "slice_resampling_params",
+	"helpTip": "dz",
+	"val": 3.0,
+	"type": "float"}
 }
