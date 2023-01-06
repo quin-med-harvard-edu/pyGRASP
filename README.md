@@ -120,7 +120,7 @@ Alternatively, steps to run pyGRASP demo using pip environment:
     source venv2/bin/activate
 
     ### install dependencies
-    pip install -r requirements.txt
+    pip install -r pip_requirements.txt
     
 4) Dedicate a folder for inputOutput_path
     
