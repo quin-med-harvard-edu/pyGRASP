@@ -113,11 +113,14 @@ Alternatively, steps to run pyGRASP demo using pip environment:
 2) Download/clone the repository pyGRASP
     
 3) Create the environment from pip_requirements.txt and activate: 
-    # create virtual environment
+    ### create virtual environment
     python3 -m venv $PWD/venv2
 
-    # activate
+    ### activate
     source venv2/bin/activate
+
+    ### install dependencies
+    pip install -r requirements.txt
     
 4) Dedicate a folder for inputOutput_path
     
