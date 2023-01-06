@@ -1,5 +1,4 @@
-inputOutput_path=inputOutput
-mkdir -p $inputOutput_path
+inputOutput_path="yourFUllInputOutputPath"
 
 python convert_raw_to_dataset.py -i $inputOutput_path/MRU.csv -pg parameters/grasp_params.json -pp parameters/p_proc_params.json -o $inputOutput_path -fr True -fc True -nspkc 500
 
