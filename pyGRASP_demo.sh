@@ -1,3 +1,5 @@
+echo $"Available memory is: "$(awk '/^MemAvailable:/ { print $2; }' /proc/meminfo)$"kB"
+
 env_path="yourEnvPath"
 code_path="yourCodePath"
 inputOutput_path="yourInputOutputPath"

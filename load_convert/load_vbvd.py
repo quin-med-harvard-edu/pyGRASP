@@ -1,4 +1,5 @@
 import json
+import os
 import mapvbvd
 import numpy as np
 from tqdm import tqdm
@@ -122,6 +123,9 @@ def load_single_vbvd(path_file: str, param_parser_grasp, param_parser_pproc):
             num_chunk(int): number of chunks in the data
             list_coil(list[str]): list of coil names that are used in the acquisition
             """
+    file_stats=os.stat(path_file)
+    print(f'File size is {file_stats.st_size/1024}kB')
+    print('Please monitor your memory to notice software failure due to insufficient memory. ')
     twix_obj = mapvbvd.mapVBVD(path_file)
     is_twix_obj_list = False
 
