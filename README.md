@@ -104,7 +104,7 @@ Steps to run pyGRASP demo using conda environment:
     
 7) Run the pyGRASP_demo.sh (e.g., "bash pyGRASP_demo.sh" in command line)
     
-8) You may find the reconstructed 4D DCE-MRI result as a NIfTI file in "inputOutput_path/../sub-1/*date_time*-rec4D.nii.gz" along with the JSON file which records the parameters used in the reconstruction.  
+8) You may find the reconstructed 4D DCE-MRI result as a NIfTI file in "inputOutput_path/sub-1/*date_time*-rec4D.nii.gz" along with the JSON file which records the parameters used in the reconstruction.  
 
 Alternatively, steps to run pyGRASP demo using pip environment:
     
@@ -130,7 +130,7 @@ Alternatively, steps to run pyGRASP demo using pip environment:
     
 7) Go to pyGRASP-main folder and run pip_demo.sh (e.g., "bash pip_demo.sh" in command line)
     
-8) You may find the reconstructed 4D DCE-MRI result as a NIfTI file in "inputOutput_path/../sub-1/*date_time*-rec4D.nii.gz" along with the JSON file which records the parameters used in the reconstruction.  
+8) You may find the reconstructed 4D DCE-MRI result as a NIfTI file in "inputOutput_path/sub-1/*date_time*-rec4D.nii.gz" along with the JSON file which records the parameters used in the reconstruction.  
 
 
 Alternative to command prompt you can the code in a python editor/compiler. 
