@@ -212,6 +212,8 @@ def edit_grasp_pproc_params(param_parser_grasp, param_parser_pproc, twix_obj, is
         param_parser_grasp.save_struct_to_file(param_parser_grasp.file_path)
 
         param_parser_pproc.params_struct['post_img_size']['val'] = [nx_image, ny_image, no_slices]
+        if not slice_os:
+            slice_os = 0.0
         param_parser_pproc.params_struct['rate_os']['val'] = 1.0 + slice_os
         dx_dict = {"section": "slice_resampling_params", "helpTip": "dx", "val": dx, "type":"float"}
         dy_dict = {"section": "slice_resampling_params", "helpTip": "dy", "val": dy, "type": "float"}
