@@ -131,7 +131,10 @@ for idx_s, dat_idx in enumerate(idx_sub):
                                            max_num_line_search=max_num_ls)
 
     _rec = {'rec': xk_hat}
-    file_name = os.path.join(path_raw_rec, 's-' + str(idx_s) + '.mat')
+    if idx_s < 10:
+        file_name = os.path.join(path_raw_rec, 's-0' + str(idx_s) + '.mat')
+    else:
+        file_name = os.path.join(path_raw_rec, 's-' + str(idx_s) + '.mat')
     sio.savemat(file_name, _rec)
 
 print("Total Time Elapsed:{}".format(time.time() - t))
