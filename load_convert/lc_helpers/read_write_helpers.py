@@ -103,10 +103,10 @@ def update_loader(path_csv: str,
                 dat_save = dat[key_][:, :, :, idx_slice]
             else:
                 dat_save = dat[key_]
-                if idx_slice < 10:
-                    save_name = '{}_slice_0{}'.format(key_, idx_slice)
-                else:
-                    save_name = '{}_slice_{}'.format(key_, idx_slice)
+            if idx_slice < 10:
+                save_name = '{}_slice_0{}'.format(key_, idx_slice)
+            else:
+                save_name = '{}_slice_{}'.format(key_, idx_slice)
             sio.savemat(os.path.join(save_key_, save_name) + '.mat',
                         {save_name: dat_save})
             del dat_save
