@@ -88,6 +88,8 @@ In order to start running dce_mri on a Docker container, your current directory 
 
 You may run the code by cloning the repository, installing the environment, and running the scripts. An example script "pyGRASP_demo.sh" has been provided to run a demo case along with the raw data. Environment, code and input-output paths have to be edited in pyGRASP_demo.sh. Also, raw data address has to be updated in MRU.csv. Then, one can run the demo via "bash pyGRASP_demo.sh" command on terminal. There are two available data (DCE_MRI_MRU.dat) for DCE-MRI and they can be be downloaded from [figshare_data_1](https://figshare.com/articles/dataset/DCE_MRI_MRU_dat/20465637) and [figshare_data_2](https://figshare.com/articles/dataset/DCE-MRI_raw_data/22043195). 
 
+Note that you would approximately need ~64 GB and ~16 GB of free memory are required for the first and the second dataset, respectively.
+
 Steps to run pyGRASP demo using conda environment:
     
 1) Download the data [figshare_data_1](https://figshare.com/articles/dataset/DCE_MRI_MRU_dat/20465637) or [figshare_data_2](https://figshare.com/articles/dataset/DCE-MRI_raw_data/22043195). The latter one is smaller in size due to having less number of channel measurements. 
@@ -172,6 +174,7 @@ Example:
 ```
 docker run -it --rm -v $input_path:/inputfolder -v $data_path:/datafolder dce_mri_cpu:latest bash run_grasp.sh True True 500 False
 ```
+The computation time was ~ 7.3 mins/slice, on CPU with 32 cores and 252GiB. 
 
 ## GPU
 
@@ -234,6 +237,9 @@ Example:
 ```
 docker run -it --gpus all --rm -v $input_path:/inputfolder -v $data_path:/datafolder dce_mri_gpu:latest bash run_grasp.sh True True 500 True
 ```
+
+The computation time was ~3.5 mins/slice on GPU, using a batch size of 10 ( GPU’s memory was 24564MiB). 
+
 ## Acknowledgements
 
 This work was supported partially by the National Institute of Diabetic and Digestive and Kidney Diseases (NIDDK), National Institute of Biomedical Imaging and Bioengineering (NIBIB) under award numbers R01DK125561, R21DK123569 and R21EB029627.
