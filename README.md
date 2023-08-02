@@ -8,7 +8,7 @@ This library also provides the options to perform coil compression and/or coil r
 
 PyGRASP is implemented completely in Python, facilitating flexible deployment with readable code and no complation. We also provide containerized version of the library in Dockers for GPU and CPU options for quick deployment.
 
-If you use this library or its containerized Docker versions please cite our [ISMRM](https://submissions.mirasmart.com/ISMRM2023/Itinerary/Files/PDFFiles/ViewAbstract.aspx) paper.
+If you use this library or its containerized Docker versions please cite our [ISMRM](https://submissions.mirasmart.com/ISMRM2023/Itinerary/PresentationDetail.aspx?evdid=2579) paper.
 
 ## Instructions to run dce_mri
 There are three main parts - and Python scripts - of the reconstruction pipeline:
