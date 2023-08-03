@@ -70,7 +70,7 @@ class PostProcessParamParse(ParamParse):
         super().__init__(json_path)
 
         self.file_path = json_path
-        required_params = ['post_img_size', 'rate_os', 'flag_fft_shift', 'dx', 'dy', 'dz']
+        required_params = ['post_img_size', 'rate_os', 'flag_fft_shift', 'dx', 'dy', 'dz', 'dt']
         required_fields = ['section', 'helpTip', 'val', 'type']
         self.check_and_parse(required_params, required_fields)
 

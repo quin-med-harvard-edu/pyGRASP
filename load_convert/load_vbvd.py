@@ -196,14 +196,15 @@ def edit_grasp_pproc_params(param_parser_grasp, param_parser_pproc, twix_obj, is
         dz = meas_yaps['sSliceArray', 'asSlice', '0', 'dThickness'] / no_slices  # dz = FOVpar.dThickness / noSlices;
 
         tot_scan_time = meas_yaps['lTotalScanTimeSec',]                           # totScanTime = k{2}.hdr.MeasYaps.lTotalScanTimeSec;
+        spv = param_parser_grasp['spv']['val']                                    
         if is_twix_obj_list:
             slice_os = hdr['Dicom']['flSliceOS']                                 # sliceOS=k{2}.hdr.Dicom.flSliceOS
-            temp_res = 34 * tot_scan_time / image_shape[2]                       # tempRes = 34 * totScanTime / sz(3);
-            num_vols = image_shape[2] // 34                                      # numVols = floor(sz(3) / 34);
+            temp_res = spv * tot_scan_time / image_shape[2]                       # tempRes = 34 * totScanTime / sz(3);
+            num_vols = image_shape[2] // spv                                      # numVols = floor(sz(3) / 34);
         else:
             slice_os = meas_yaps['sKSpace', 'dSliceOversamplingForDialog']       # sliceOS=k.hdr.MeasYaps.sKSpace.dSliceOversamplingForDialog;
-            temp_res = 34 * tot_scan_time / (image_shape[2] * image_shape[4])    # tempRes=34*totScanTime/(sz(3)*sz(5));
-            num_vols = (image_shape[2] * image_shape[4]) // 34                   # numVols=floor(sz(3)*sz(5)/34);
+            temp_res = spv * tot_scan_time / (image_shape[2] * image_shape[4])    # tempRes=34*totScanTime/(sz(3)*sz(5));
+            num_vols = (image_shape[2] * image_shape[4]) // spv                   # numVols=floor(sz(3)*sz(5)/34);
 
         #print(param_parser_grasp.file_path)
         param_parser_grasp.params_struct['nd']['val'] = [2.0 * nx_image, 2.0 * ny_image]
@@ -221,6 +222,7 @@ def edit_grasp_pproc_params(param_parser_grasp, param_parser_pproc, twix_obj, is
         param_parser_pproc.params_struct['dx'] = dx_dict
         param_parser_pproc.params_struct['dy'] = dy_dict
         param_parser_pproc.params_struct['dz'] = dz_dict
+        param_parser_pproc.params_struct['dt'] = temp_res
         param_parser_pproc.save_struct_to_file(param_parser_pproc.file_path)
         #"flag_fft_shift":
         #{

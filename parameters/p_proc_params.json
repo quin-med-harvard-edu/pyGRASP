@@ -32,5 +32,11 @@
 	"section": "slice_resampling_params",
 	"helpTip": "dz",
 	"val": 3.0,
-	"type": "float"}
+	"type": "float"},
+"dt": {
+    "section": "slice_resampling_params",
+    "helpTip": "dt",
+    "val": 3.2,
+    "type": "float"
+    },
 }

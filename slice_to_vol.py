@@ -14,6 +14,7 @@ def corrHead(fileName, dx, dy, dz):
     newheader['pixdim'][1] = dx
     newheader['pixdim'][2] = dy
     newheader['pixdim'][3] = dz
+    newheader['pixdim'][4] = dt
 
     #newheader['qoffset_x'] = -155.138
     #newheader['qoffset_y'] = 13.7454
@@ -66,6 +67,7 @@ flag_fft_shift = parameters['flag_fft_shift']
 dx = parameters['dx']
 dy = parameters['dy']
 dz = parameters['dz']
+dt = parameters['dt']
 
 folder_raw_rec = root_rec
 # folder_raw_rec = os.path.join(root_rec, 'raw-rec')
