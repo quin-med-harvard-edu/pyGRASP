@@ -73,7 +73,9 @@ folder_raw_rec = root_rec
 #     folder_raw_rec)
 
 rec_volume = []
-for rec_file in os.listdir(folder_raw_rec):
+mat_files = sorted([f for f in os.listdir(folder_raw_rec) if f.endswith(".mat")], key=lambda x: int(x.split("-")[1].split(".")[0]))
+
+for rec_file in mat_files:
     if rec_file.endswith(".mat"):
         rec_volume.append(np.absolute(sio.loadmat(os.path.join(folder_raw_rec, rec_file))['rec']))
     #rec_volume.append(sio.loadmat(os.path.join(folder_raw_rec, rec_file))['rec'])
