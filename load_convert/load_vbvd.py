@@ -196,7 +196,7 @@ def edit_grasp_pproc_params(param_parser_grasp, param_parser_pproc, twix_obj, is
         dz = meas_yaps['sSliceArray', 'asSlice', '0', 'dThickness'] / no_slices  # dz = FOVpar.dThickness / noSlices;
 
         tot_scan_time = meas_yaps['lTotalScanTimeSec',]                           # totScanTime = k{2}.hdr.MeasYaps.lTotalScanTimeSec;
-        spv = param_parser_grasp['spv']['val']                                    
+        spv = param_parser_grasp.params_struct['spv']['val']
         if is_twix_obj_list:
             slice_os = hdr['Dicom']['flSliceOS']                                 # sliceOS=k{2}.hdr.Dicom.flSliceOS
             temp_res = spv * tot_scan_time / image_shape[2]                       # tempRes = 34 * totScanTime / sz(3);
