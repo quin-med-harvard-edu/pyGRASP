@@ -98,10 +98,23 @@ class CRLMRUData(Dataset):
             folder_dcf = os.path.join(root_dir, item_[self.primitive_info.index('dcf')])
             total_spk = int(float(item_[self.primitive_info.index('total_spokes')]))
 
+            folder_k3n_list = os.listdir(folder_k3n)
+            folder_k22n_list = os.listdir(folder_k22n)
+            folder_cp_list = os.listdir(folder_cp)
+            folder_dcf_list = os.listdir(folder_dcf)
+            folder_ks_list = os.listdir(folder_ks)
+
+            # Sort the lists
+            folder_k3n_list.sort()
+            folder_k22n_list.sort()
+            folder_cp_list.sort()
+            folder_dcf_list.sort()
+            folder_ks_list.sort()
+
             for slice_idx, [file_k3n, file_k22n, file_cp, file_dcf, file_ks] in \
-                    enumerate(zip(os.listdir(folder_k3n), os.listdir(folder_k22n),
-                                  os.listdir(folder_cp), os.listdir(folder_dcf),
-                                  os.listdir(folder_ks))):
+                    enumerate(zip(folder_k3n_list, folder_k22n_list,
+                                  folder_cp_list, folder_dcf_list,
+                                  folder_ks_list)):
                 dat_parse.append(
                     [item_[self.primitive_info.index('id')] + '-s' + str(slice_idx),
                      os.path.join(folder_k3n, file_k3n),
