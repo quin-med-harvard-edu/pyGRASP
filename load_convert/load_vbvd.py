@@ -219,10 +219,11 @@ def edit_grasp_pproc_params(param_parser_grasp, param_parser_pproc, twix_obj, is
         dx_dict = {"section": "slice_resampling_params", "helpTip": "dx", "val": dx, "type":"float"}
         dy_dict = {"section": "slice_resampling_params", "helpTip": "dy", "val": dy, "type": "float"}
         dz_dict = {"section": "slice_resampling_params", "helpTip": "dz", "val": dz, "type": "float"}
+        dt_dict = {"section": "slice_resampling_params", "helpTip": "dt", "val": temp_res, "type": "float"}
         param_parser_pproc.params_struct['dx'] = dx_dict
         param_parser_pproc.params_struct['dy'] = dy_dict
         param_parser_pproc.params_struct['dz'] = dz_dict
-        param_parser_pproc.params_struct['dt'] = temp_res
+        param_parser_pproc.params_struct['dt'] = dt_dict
         param_parser_pproc.save_struct_to_file(param_parser_pproc.file_path)
         #"flag_fft_shift":
         #{
