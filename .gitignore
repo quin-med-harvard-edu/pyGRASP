@@ -10,3 +10,4 @@ dev_diary.txt
 stuff.py
 *.pyc
 *.mat
+*.ipynb

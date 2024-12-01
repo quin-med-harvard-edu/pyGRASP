@@ -1,0 +1,28 @@
+name: dce_env_test
+channels:
+  - pytorch
+  - nvidia
+  - anaconda
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - ipython
+  - ipdb
+  - pip
+  - joblib
+  - pynufft
+  - pandas
+  - scipy
+  - tqdm
+  - hdf5storage
+  - pymapvbvd
+  - nibabel
+  - numpy
+  - lmfit
+  - pip:
+    - pymapvbvd
+    - torch
+    - torchkbnufft
+
+# manually ppp install Liam's pypilottone library for now since it's not on PyPI

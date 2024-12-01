@@ -1,81 +1,80 @@
 {
-"path_root_csv": {
-	"section": "main_params",
-	"helpTip": "[domain] Path to the dataset csv file.",
-	"val": "null",
-	"type": "str"
-},
-"subject_id": {
-	"section": "main_params",
-	"helpTip": "Subject id (check loader.csv 1st column)",
-	"val": "null",
-	"type": "str"
-},
-"save_root": {
-	"section": "main_params",
-	"helpTip": "[output] Path to the save root.",
-	"val": "/fileserver/fastscratch/",
-	"type": "str"
-},
-"spv": {
-	"section": "main_params",
-	"helpTip": "Spokes per volume number. Determines resolution.",
-	"val": 34,
-	"type": "int"
-},
-
-"lam": {
-	"section": "grasp_params",
-	"helpTip": "Param in ||Ax-Y||_2+lam||TV(x)||_1",
-	"val": 0.125,
-	"type": "float"
-},
-"max_num_iter": {
-	"section": "grasp_params",
-	"helpTip": "Maximum number of iterations in Grasp",
-	"val": 8,
-	"type": "int"
-},
-"max_num_ls": {
-	"section": "grasp_params",
-	"helpTip": "Maximum number line searches within each Grasp iteration",
-	"val": 20,
-	"type": "int"
-},
-"nd": {
-	"section": "nufft_params",
-	"helpTip": "nd - Notice that json does not recognize tuple format. Define it as a list!",
-	"val": [224,224],
-	"type": "tuple-int"
-},
-"kd": {
-	"section": "nufft_params",
-	"helpTip": "kd - This parameter is usually set to 1.5 x nd",
-	"val": [336,336],
-	"type": "tuple-int"
-},
-"jd": {
-	"section": "nufft_params",
-	"helpTip": "jd",
-	"val": [6,6],
-	"type": "tuple-int"
-},
-"is_gpu": {
-	"section": "nufft_params",
-	"helpTip": "Only valid if NUFFT operator has a parameter option is_gpu",
-	"val": false,
-	"type": "bool"
-},
-"size_nufft_batch": {
-	"section": "nufft_params",
-	"helpTip": "Only valid if NUFFT operator has a parameter option is_gpu. Provide a batch size to avoid GPU memory issues",
-	"val": 10,
-	"type": "int"
-},
-"fov_scaling": {
-	"section": "slice_resampling_params",
-	"helpTip": "field of view scaling factor. Downsamples freq domain input by the value and crops image domain input (coil_p) with the factor",
-	"val": 2,
-	"type": "int"
-}
+  "path_root_csv": {
+    "section": "main_params",
+    "helpTip": "[domain] Path to the dataset csv file.",
+    "val": null,
+    "type": "str"
+  },
+  "subject_id": {
+    "section": "main_params",
+    "helpTip": "Subject id (check loader.csv 1st column)",
+    "val": null,
+    "type": "str"
+  },
+  "save_root": {
+    "section": "main_params",
+    "helpTip": "[output] Path to the save root.",
+    "val": null,
+    "type": "str"
+  },
+  "spv": {
+    "section": "main_params",
+    "helpTip": "Spokes per volume number. Determines resolution.",
+    "val": 34,
+    "type": "int"
+  },
+  "lam": {
+    "section": "grasp_params",
+    "helpTip": "Param in ||Ax-Y||_2+lam||TV(x)||_1",
+    "val": 0.05,
+    "type": "float"
+  },
+  "max_num_iter": {
+    "section": "grasp_params",
+    "helpTip": "Maximum number of iterations in Grasp",
+    "val": 8,
+    "type": "int"
+  },
+  "max_num_ls": {
+    "section": "grasp_params",
+    "helpTip": "Maximum number line searches within each Grasp iteration",
+    "val": 20,
+    "type": "int"
+  },
+  "nd": {
+    "section": "nufft_params",
+    "helpTip": "nd - Notice that json does not recognize tuple format. Define it as a list!",
+    "val": [448.0, 448.0],
+    "type": "tuple-int"
+  },
+  "kd": {
+    "section": "nufft_params",
+    "helpTip": "kd - This parameter is usually set to 1.5 x nd",
+    "val": [672.0, 672.0],
+    "type": "tuple-int"
+  },
+  "jd": {
+    "section": "nufft_params",
+    "helpTip": "jd",
+    "val": [6, 6],
+    "type": "tuple-int"
+  },
+  "is_gpu": {
+    "section": "nufft_params",
+    "helpTip": "Only valid if NUFFT operator has a parameter option is_gpu",
+    "val": true,
+    "type": "bool"
+  },
+  "size_nufft_batch": {
+    "section": "nufft_params",
+    "helpTip": "Only valid if NUFFT operator has a parameter option is_gpu. Provide a batch size to avoid GPU memory issues",
+    "val": 10,
+    "type": "int"
+  },
+  "fov_scaling": {
+    "section": "slice_resampling_params",
+    "helpTip": "field of view scaling factor. Downsamples freq domain input by the value and crops image domain input (coil_p) with the factor",
+    "val": 1,
+    "type": "int"
+  }
 }

@@ -9,7 +9,7 @@ from scipy import ndimage
 
 
 def calculate_prewhitening(noise, scale_factor=1.0):
-    '''Calculates the noise prewhitening matrix
+    """Calculates the noise prewhitening matrix
 
     :param noise: Input noise data (array or matrix), ``[coil, nsamples]``
     :scale_factor: Applied on the noise covariance matrix. Used to
@@ -18,7 +18,7 @@ def calculate_prewhitening(noise, scale_factor=1.0):
                    scale_factor = (T_acq_dwell/T_noise_dwell)*NoiseReceiverBandwidthRatio
 
     :returns w: Prewhitening matrix, ``[coil, coil]``, w*data is prewhitened
-    '''
+    """
 
     noise_int = noise.reshape((noise.shape[0], noise.size // noise.shape[0]))
     M = float(noise_int.shape[1])
@@ -29,21 +29,23 @@ def calculate_prewhitening(noise, scale_factor=1.0):
 
 
 def apply_prewhitening(data, dmtx):
-    '''Apply the noise prewhitening matrix
+    """Apply the noise prewhitening matrix
 
     :param noise: Input noise data (array or matrix), ``[coil, ...]``
     :param dmtx: Input noise prewhitening matrix
 
     :returns w_data: Prewhitened data, ``[coil, ...]``,
-    '''
+    """
 
     s = data.shape
-    return np.asarray(np.asmatrix(dmtx) * np.asmatrix(
-        data.reshape(data.shape[0], data.size // data.shape[0]))).reshape(s)
+    return np.asarray(
+        np.asmatrix(dmtx)
+        * np.asmatrix(data.reshape(data.shape[0], data.size // data.shape[0]))
+    ).reshape(s)
 
 
 def calculate_csm_walsh(img, smoothing=5, niter=3):
-    '''Calculates the coil sensitivities for 2D data using an iterative version of the Walsh method
+    """Calculates the coil sensitivities for 2D data using an iterative version of the Walsh method
 
     :param img: Input images, ``[coil, y, x]``
     :param smoothing: Smoothing block size (default ``5``)
@@ -51,7 +53,7 @@ def calculate_csm_walsh(img, smoothing=5, niter=3):
 
     :returns csm: Relative coil sensitivity maps, ``[coil, y, x]``
     :returns rho: Total power in the estimated coils maps, ``[y, x]``
-    '''
+    """
 
     assert img.ndim == 3, "Coil sensitivity map must have exactly 3 dimensions"
 
@@ -93,9 +95,8 @@ def calculate_csm_walsh(img, smoothing=5, niter=3):
     return (csm, rho)
 
 
-def calculate_csm_inati_iter(im, smoothing=5, niter=5, thresh=1e-3,
-                             verbose=False):
-    """ Fast, iterative coil map estimation for 2D or 3D acquisitions.
+def calculate_csm_inati_iter(im, smoothing=5, niter=5, thresh=1e-3, verbose=False):
+    """Fast, iterative coil map estimation for 2D or 3D acquisitions.
 
     Parameters
     ----------
@@ -136,8 +137,9 @@ def calculate_csm_inati_iter(im, smoothing=5, niter=5, thresh=1e-3,
 
     im = np.asarray(im)
     if im.ndim < 3 or im.ndim > 4:
-        raise ValueError("Expected 3D [ncoils, ny, nx] or 4D "
-                         " [ncoils, nz, ny, nx] input.")
+        raise ValueError(
+            "Expected 3D [ncoils, ny, nx] or 4D " " [ncoils, nz, ny, nx] input."
+        )
 
     if im.ndim == 3:
         # pad to size 1 on z for 2D + coils case
@@ -148,7 +150,12 @@ def calculate_csm_inati_iter(im, smoothing=5, niter=5, thresh=1e-3,
 
     # convert smoothing kernel to array
     if isinstance(smoothing, int):
-        smoothing = np.asarray([smoothing, ] * 3)
+        smoothing = np.asarray(
+            [
+                smoothing,
+            ]
+            * 3
+        )
     smoothing = np.asarray(smoothing)
     if smoothing.ndim > 1 or smoothing.size != 3:
         raise ValueError("smoothing should be an int or a 3-element 1D array")
@@ -157,7 +164,15 @@ def calculate_csm_inati_iter(im, smoothing=5, niter=5, thresh=1e-3,
         smoothing[2] = 1  # no smoothing along z in 2D case
 
     # smoothing kernel is size 1 on the coil axis
-    smoothing = np.concatenate(([1, ], smoothing), axis=0)
+    smoothing = np.concatenate(
+        (
+            [
+                1,
+            ],
+            smoothing,
+        ),
+        axis=0,
+    )
 
     ncha = im.shape[0]
 
@@ -227,13 +242,13 @@ def calculate_csm_inati_iter(im, smoothing=5, niter=5, thresh=1e-3,
 
 
 def smooth(img, box=5):
-    '''Smooths coil images
+    """Smooths coil images
 
     :param img: Input complex images, ``[y, x] or [z, y, x]``
     :param box: Smoothing block size (default ``5``)
 
     :returns simg: Smoothed complex image ``[y,x] or [z,y,x]``
-    '''
+    """
 
     t_real = np.zeros(img.shape)
     t_imag = np.zeros(img.shape)

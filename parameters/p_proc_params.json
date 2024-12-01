@@ -1,42 +1,44 @@
 {
-"post_img_size": {
-	"section": "slice_resampling_params",
-	"helpTip": "sizes of the rescaled image. 3 integers - Ns x Ns x NSlice ",
-	"val": [224,224,32],
-	"type": "tuple-int"
-},
-"rate_os": {
-	"section": "slice_resampling_params",
-	"helpTip": "oversampling rate for slice interpolation. If 1.2, NSl is 10, first interpolates 2 more slices then crops outliers",
-	"val": 1.2,
-	"type": "float"
-},
-"flag_fft_shift": {
-	"section": "slice_resampling_params",
-	"helpTip": "if true applies fft-shift along slice axis",
-	"val": true,
-	"type": "bool"
-},
-"dx": {
-	"section": "slice_resampling_params",
-	"helpTip": "dx",
-	"val": 1.25,
-	"type": "float"
-},
-"dy": {
-	"section": "slice_resampling_params",
-	"helpTip": "dy",
-	"val": 1.25,
-	"type": "float"},
-"dz": {
-	"section": "slice_resampling_params",
-	"helpTip": "dz",
-	"val": 3.0,
-	"type": "float"},
-"dt": {
+  "post_img_size": {
+    "section": "slice_resampling_params",
+    "helpTip": "sizes of the rescaled image. 3 integers - Ns x Ns x NSlice ",
+    "val": [224.0, 224.0, 44.0],
+    "type": "tuple-int"
+  },
+  "rate_os": {
+    "section": "slice_resampling_params",
+    "helpTip": "oversampling rate for slice interpolation. If 1.2, NSl is 10, first interpolates 2 more slices then crops outliers",
+    "val": 1.272727,
+    "type": "float"
+  },
+  "flag_fft_shift": {
+    "section": "slice_resampling_params",
+    "helpTip": "if true applies fft-shift along slice axis",
+    "val": true,
+    "type": "bool"
+  },
+  "dx": {
+    "section": "slice_resampling_params",
+    "helpTip": "dx",
+    "val": 1.3392857142857142,
+    "type": "float"
+  },
+  "dy": {
+    "section": "slice_resampling_params",
+    "helpTip": "dy",
+    "val": 1.3392857142857142,
+    "type": "float"
+  },
+  "dz": {
+    "section": "slice_resampling_params",
+    "helpTip": "dz",
+    "val": 3.0,
+    "type": "float"
+  },
+  "dt": {
     "section": "slice_resampling_params",
     "helpTip": "dt",
-    "val": 3.2,
+    "val": 4.153846153846154,
     "type": "float"
-    }
+  }
 }
